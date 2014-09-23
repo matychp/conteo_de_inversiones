@@ -34,7 +34,7 @@ public class Main {
 
     public static void main(String args[]) {
 
-        cargarColeccion(LOTE02, ARREGLO);
+        cargarColeccion(PRUEBA01, ARREGLO);
 
         elegirAlgoritmo(MENOR_ARREGLO);
 
@@ -51,15 +51,15 @@ public class Main {
                 switch (archivo) {
                     case LOTE01:
                         unArreglo = new int[30000];
-                        f = new File("lote01.txt");
+                        f = new File("./resources/lote01.txt");
                         break;
                     case LOTE02:
                         unArreglo = new int[300000];
-                        f = new File("lote02.txt");
+                        f = new File("./resources/lote02.txt");
                         break;
                     case PRUEBA01:
                         unArreglo = new int[6];
-                        f = new File("prueba01.txt");
+                        f = new File("./resources/prueba01.txt");
                         break;
                 }
                 break;
@@ -67,11 +67,11 @@ public class Main {
                 switch (archivo) {
                     case LOTE01:
                         unaLista = new ArrayList<>();
-                        f = new File("lote01.txt");
+                        f = new File("./resources/lote01.txt");
                         break;
                     case LOTE02:
                         unaLista = new ArrayList<>();
-                        f = new File("lote02.txt");
+                        f = new File("./resources/lote02.txt");
                         break;
                 }
                 break;
@@ -79,11 +79,11 @@ public class Main {
                 switch (archivo) {
                     case LOTE01:
                         unaSimpleList = new SimpleList<>();
-                        f = new File("lote01.txt");
+                        f = new File("./resources/lote01.txt");
                         break;
                     case LOTE02:
                         unaSimpleList = new SimpleList<>();
-                        f = new File("lote02.txt");
+                        f = new File("./resources/lote02.txt");
                         break;
                 }
                 break;
@@ -91,15 +91,15 @@ public class Main {
                 switch (archivo) {
                     case LOTE01:
                         unHeapAscendente = new Heap<>(30000, true);
-                        f = new File("lote01.txt");
+                        f = new File("./resources/lote01.txt");
                         break;
                     case LOTE02:
                         unHeapAscendente = new Heap<>(300000, true);
-                        f = new File("lote02.txt");
+                        f = new File("./resources/lote02.txt");
                         break;
                     case PRUEBA01:
                         unHeapAscendente = new Heap<>(6, true);
-                        f = new File("prueba01.txt");
+                        f = new File("./resources/prueba01.txt");
                         break;
                 }
         }
