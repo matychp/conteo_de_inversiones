@@ -34,9 +34,9 @@ public class Main {
 
     public static void main(String args[]) {
 
-        cargarColeccion(PRUEBA01, ARREGLO_HEAP);
+        cargarColeccion(LOTE02, ARREGLO);
 
-        elegirAlgoritmo(MENOR_ARREGLO_HEAP);
+        elegirAlgoritmo(MENOR_ARREGLO);
 
         System.out.println("Cantidad de inversiones: " + unContador);
 
@@ -105,7 +105,7 @@ public class Main {
         }
 
         try (Scanner sc = new Scanner(f)) {
-            int pos = 0, unInt = 0; //usado para la carga ARREGLO y ARREGLO_HEAP
+            int pos = 0; //usado para la carga ARREGLO y ARREGLO_HEAP
             switch (tipoColeccion) {
                 case ARREGLO:
                     while (sc.hasNextInt()) {
@@ -308,22 +308,6 @@ public class Main {
                 while(! unHeapAscendente.isEmpty()){
                     
                 }
-                /*
-                while (unArreglo.length != 0) {
-                    //Toma el indice del primer numero de la lista.
-                    elMenorDeLaLista = unArreglo[0];
-                    posMenor = 0;
-                    //Usa el ciclo para determinar si existe un numero menor al tomado
-                    for (int i = 0; i < unArreglo.length; i++) {
-                        if (unArreglo[i] < elMenorDeLaLista) {
-                            elMenorDeLaLista = unArreglo[i];//Se detectó un numero menor, lo guarda.
-                            posMenor = i;//Y tambien guarda su posicion en la lista.
-                        }
-                    }
-                    unContador += posMenor;//Suma las posiciones que se restaron a la lista (que serian la cantidad de inversiones).
-                    unArreglo = eliminarIndice(unArreglo, posMenor);
-                }
-                **/
                 break;
             case MAYORES_MENORES_ARREGLO:
                 //Noveno Algoritmo
@@ -379,9 +363,7 @@ public class Main {
 
         otroArreglo = new int[(unArreglo.length - 1)];
 
-        for (int i = 0; i < indice; i++) {
-            otroArreglo[i] = unArreglo[i];
-        }
+        System.arraycopy(unArreglo, 0, otroArreglo, 0, indice);
         for (int j = indice + 1; j < unArreglo.length; j++) {
             otroArreglo[j - 1] = unArreglo[j];
         }
@@ -392,9 +374,7 @@ public class Main {
 
         otroArreglo = new int[(unArreglo.length + 1)];
 
-        for (int i = 0; i < unArreglo.length; i++) {
-            otroArreglo[i] = unArreglo[i];
-        }
+        System.arraycopy(unArreglo, 0, otroArreglo, 0, unArreglo.length);
         otroArreglo[otroArreglo.length - 1] = unEnteroAAgregar;
 
         return otroArreglo;
@@ -432,6 +412,5 @@ public class Main {
         //Conclusion, no hay diferencias entre for y for each para el lote02.
         //En cuanto a recorrer la lista, O(n).
     }
-
 }
 
