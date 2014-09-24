@@ -34,7 +34,7 @@ public class Main {
 
     public static void main(String args[]) {
 
-        cargarColeccion(PRUEBA01, ARREGLO);
+        cargarColeccion(LOTE02, ARREGLO);
 
         elegirAlgoritmo(MENOR_ARREGLO);
 
@@ -91,14 +91,17 @@ public class Main {
                 switch (archivo) {
                     case LOTE01:
                         unHeapAscendente = new Heap<>(30000, true);
+                        unArreglo = new int[30000];
                         f = new File("./resources/lote01.txt");
                         break;
                     case LOTE02:
                         unHeapAscendente = new Heap<>(300000, true);
+                        unArreglo = new int[300000];
                         f = new File("./resources/lote02.txt");
                         break;
                     case PRUEBA01:
                         unHeapAscendente = new Heap<>(6, true);
+                        unArreglo = new int[6];
                         f = new File("./resources/prueba01.txt");
                         break;
                 }
@@ -106,6 +109,7 @@ public class Main {
 
         try (Scanner sc = new Scanner(f)) {
             int pos = 0; //usado para la carga ARREGLO y ARREGLO_HEAP
+            int unNumCargar;
             switch (tipoColeccion) {
                 case ARREGLO:
                     while (sc.hasNextInt()) {
@@ -126,7 +130,10 @@ public class Main {
                     break;
                 case ARREGLO_HEAP:
                     while (sc.hasNextInt()) {
-                        unHeapAscendente.add(sc.nextInt());
+                        unNumCargar = sc.nextInt();
+                        unHeapAscendente.add(unNumCargar);
+                        unArreglo[pos] = unNumCargar;
+                        pos++;
                     }
                     break;
                 default:
@@ -299,14 +306,21 @@ public class Main {
                 }
                 break;
             case MENOR_ARREGLO_HEAP:
-                //Decimo Algortimo.
+                // Algortimo.
                 //Funciona con el prueba01 ( segundos).
                 //Funciona con el lote01 ( segundos).
                 //Funciona con el lote02 ().
-
-                System.out.println("Heap ascendente: " + unHeapAscendente);
+                int menor;
                 while(! unHeapAscendente.isEmpty()){
-                    
+                    menor = unHeapAscendente.remove();
+                    for(Integer i: unArreglo){
+                        if(unArreglo[i] > menor){//Inversion
+                            unContador += 1;
+                        }
+                        else{
+                            break;
+                        }
+                    }
                 }
                 break;
             case MAYORES_MENORES_ARREGLO:
@@ -364,9 +378,7 @@ public class Main {
         otroArreglo = new int[(unArreglo.length - 1)];
 
         System.arraycopy(unArreglo, 0, otroArreglo, 0, indice);
-        for (int j = indice + 1; j < unArreglo.length; j++) {
-            otroArreglo[j - 1] = unArreglo[j];
-        }
+        System.arraycopy(unArreglo, (indice + 1), otroArreglo, indice, (unArreglo.length - indice - 1));
         return otroArreglo;
     }
 
