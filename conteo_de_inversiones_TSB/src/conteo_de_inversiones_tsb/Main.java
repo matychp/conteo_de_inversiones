@@ -34,9 +34,37 @@ public class Main {
 
     public static void main(String args[]) {
 
-        cargarColeccion(LOTE02, ARREGLO);
-
-        elegirAlgoritmo(MENOR_ARREGLO);
+        Scanner in = new Scanner(System.in);
+        System.out.print("Seleccion el archivo a cargar:" +
+                "\n0.LOTE01.txt" +
+                "\n1.LOTE02.txt" +
+                "\n2.PRUEBA01.txt" +
+                "Ingrese una opcion: ");
+        int opcionArchivo = in.nextInt();
+        System.out.print("Seleccion la estructura a utilizar: " +
+                "\n0.Arreglo" +
+                "\n1.ArrayList" +
+                "\n2.SimpleList" +
+                "\n3.Arreglo + Heap" +
+                "Ingrese una opcion: ");
+        int opcionEstructura = in.nextInt();
+        
+        System.out.print("Seleccion el algoritmo a utilizar: " +
+                "\n0.Seleccion Directa" +
+                "\n1.O(n) For" +
+                "\n2.O(n) While" +
+                "\n3.Conteo desde el primer elemento del arreglo" +
+                "\n4.Conteo usando el menor en una lista" +
+                "\n5.Conteo usando el menor en una SimpleList" +
+                "\n6.Conteo buscando el menor en una lista." +
+                "\n7.Conteo buscando el menor en un arreglo y eliminandolo" +
+                "\n8.Buscando el menor obtenido por un Heap" +
+                "\n9.Utilizando el primer elemento del arreglo y buscando mayores y menores." +
+                "Ingrese una opcion: ");
+        int opcionAlgoritmo = in.nextInt();
+                
+        cargarColeccion(opcionArchivo, opcionEstructura);
+        elegirAlgoritmo(opcionAlgoritmo);
 
         System.out.println("Cantidad de inversiones: " + unContador);
 
